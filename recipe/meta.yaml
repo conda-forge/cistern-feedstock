@@ -14,11 +14,11 @@ source:
     sha256: bf1c33c593cefd5360f8881a603f2f7204ea700d5f05601382df17730b687d47
 
 build:
-  number: 0
-  skip: true  # [win]
+  number: 1
   script:
     - pushd {{ pkg_src }}
     - go build -ldflags "-X main.Version={{ version }}" -v -o $GOBIN/{{ name }} ./cmd/cistern   # [unix]
+    - go build -ldflags "-X main.Version={{ version }}" -v -o %GOBIN%\{{ name }}.exe ./cmd/cistern   # [win]
 
 requirements:
   build:
